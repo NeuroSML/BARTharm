@@ -25,23 +25,7 @@ devtools::install_github("jaredsmurray/SoftBart")  # for SoftBart
 
 ## Repository Structure
 
-bartharm/
-├── R/                      # Core R functions
-│   ├── simulate_data.R     # Generate synthetic scanner-biased data
-│   ├── load_data.R         # Load and split real data
-│   ├── normalise_data.R    # Quantile normalization
-│   ├── bartharm_inference.R # Gibbs sampler for BARTharm
-│   ├── bartharm.R          # High-level harmonization function
-│   └── utils.R             # Utilities (e.g., rmse)
-├── data/                   # Real or example datasets
-│   └── real_data.RData
-├── examples/               # Example usage scripts
-│   ├── run_simulated.R
-│   └── run_real.R
-├── results/                # Output harmonized datasets and posteriors
-├── README.md               # Project overview
-└── .gitignore              # Ignore cache and intermediate files
-
+<pre><code> ``` bartharm/ ├── R/ # Core R functions │ ├── simulate_data.R # Generate synthetic scanner-biased data │ ├── load_data.R # Load and split real data │ ├── normalise_data.R # Quantile normalization │ ├── bartharm_inference.R # Gibbs sampler for BARTharm │ ├── bartharm.R # High-level harmonization function │ └── utils.R # Utilities (e.g., rmse) ├── data/ # Real or example datasets │ └── real_data.RData ├── examples/ # Example usage scripts │ ├── run_simulated.R │ └── run_real.R ├── results/ # Output harmonized datasets and posteriors ├── README.md # Project overview └── .gitignore # Ignore cache and intermediate files ``` </code></pre>
 
 ---
 
@@ -52,7 +36,7 @@ bartharm/
 To simply return the harmonized data, one can use the following:
 
 ```
-df_harmonised <- bartharm( saving_path = saving_path, ... )
+df_harmonised <- bartharm(saving_path = saving_path, ... )
 ```
 
 where `...` are the user-specified arguments needed for harmonization. 
