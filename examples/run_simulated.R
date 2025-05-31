@@ -14,7 +14,7 @@ source("R/load_data.R")
 
 
 # Define the directory where results and intermediate files will be saved
-saving_path <- "examples/results/"
+saving_path <- "results/"
 
 # Run the BARTharm pipeline on simulated data
 # - Simulates 1000 subjects with linear outcome and scanner effects
