@@ -3,9 +3,6 @@ library(caret)
 library(SoftBart)
 library(dplyr)
 library(matrixStats)
-library(patchwork)
-library(devtools)
-library(tidyr)
 
 # Loading functions
 source("R/bartharm.R")
@@ -19,7 +16,7 @@ source("R/load_data.R")
 file_path <- 'data/real_data.RData' # dummy Real Data file for example
 
 # Directory where results and harmonized outputs will be saved
-saving_path <- "examples/results/"
+saving_path <- "results/"
 
 # Specify column names for biological covariates (e.g., age and sex)
 bio_col <- c("Age", "Sex")
