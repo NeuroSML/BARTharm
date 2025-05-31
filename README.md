@@ -27,21 +27,20 @@ devtools::install_github("jaredsmurray/SoftBart")  # for SoftBart
 
 ``` 
 bartharm/
-├── R/                      # Core R functions
-│   ├── simulate_data.R     # Generate synthetic scanner-biased data
-│   ├── load_data.R         # Load and split real data
-│   ├── normalise_data.R    # Quantile normalization
-│   ├── bartharm_inference.R # Gibbs sampler for BARTharm
-│   ├── bartharm.R          # High-level harmonization function
-│   └── utils.R             # Utilities (e.g., rmse)
-├── data/                   # Real or example datasets
+├── R/                        # Core R functions
+│   ├── simulate_data.R       # Generate synthetic scanner-biased data
+│   ├── load_data.R           # Load and process real data
+│   ├── normalise_data.R      # Data normalization
+│   ├── bartharm_inference.R  # Gibbs sampler for BARTharm
+│   ├── bartharm.R            # Main harmonization function
+├── data/                     # Real or example datasets
 │   └── real_data.RData
-├── examples/               # Example usage scripts
+├── examples/                 # Example usage scripts
 │   ├── run_simulated.R
 │   └── run_real.R
-├── results/                # Output harmonized datasets and posteriors
-├── README.md               # Project overview
-└── .gitignore              # Ignore cache and intermediate files
+├── results/                  # Output harmonized datasets and posteriors
+├── README.md                 # Project overview
+└── .gitignore                # Ignore cache and intermediate files
 ```
 
 ---
