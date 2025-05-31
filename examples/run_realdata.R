@@ -16,7 +16,7 @@ source("R/normalise_data.R")
 source("R/load_data.R")
 
 # Define path to real dataset (must be an .RData file containing a data frame)
-file_path <- 'data/real_data.RData'
+file_path <- 'data/real_data.RData' # dummy Real Data file for example
 
 # Directory where results and harmonized outputs will be saved
 saving_path <- "examples/results/"
