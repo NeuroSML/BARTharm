@@ -30,6 +30,7 @@ bartharm/
 ├── R/                        # Core R functions
 │   ├── simulate_data.R       # Generate synthetic scanner-biased data
 │   ├── load_data.R           # Load and process real data
+│   ├── get_data.R            # Get data for BARTharm
 │   ├── normalise_data.R      # Data normalization
 │   ├── bartharm_inference.R  # Gibbs sampler for BARTharm
 │   ├── bartharm.R            # Main harmonization function
