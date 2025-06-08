@@ -18,7 +18,7 @@ Install required R packages:
 ```r
 install.packages(c("dplyr", "matrixStats", "caret"))
 # If not already installed
-devtools::install_github("jaredsmurray/SoftBart")  # for SoftBart
+devtools::install_github("theodds/SoftBart")  # for SoftBart
 ```
 
 ---
