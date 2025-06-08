@@ -38,7 +38,7 @@ bartharm <- function(file_path = " ", saving_path = " ", simulate_data = TRUE, b
   # Extract normalized matrices and outcome
   X_bio_matrix <- data$X_bio_matrix
   X_iqm_matrix <- data$X_iqm_matrix
-  Y <- data$Y
+  Y <- as.data.frame(data$Y)
   df <- data$df
   
   ll <- colnames(Y) # Names of outcome variables and ID column
