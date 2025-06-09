@@ -127,10 +127,9 @@ To ensure efficient and effective use of `bartharm()` across different datasets 
 - Harmonizing few summary features (e.g., IDPs). If you are working with a small number of imaging-derived phenotypes (IDPs) or summary metrics (e.g., NBV1, NBV2), you can safely specify all of them together in the outcomes_col list and will obtain results is feasible runtimes.
 
 - Tuning BART Parameters. The following parameters control the flexibility and regularization of the BART priors used to model scanner-related nuisance effects (mu) and biological signal (tau):
-- - num_tree_mu, num_tree_tau: The number of trees used in the BART ensemble for mu and tau, respectively.
-  - beta_mu, beta_tau: Controls the variance of terminal node parameters; higher values shrink more toward zero.
-  - gamma_mu, gamma_tau: Controls the probability of splitting internal nodes; lower values lead to shallower trees (more regularization).
+- - num_tree_mu, num_tree_tau: The number of trees used in the BART ensemble for mu and tau, respectively. Increasing these increases model capacity and flexibility, but at the cost of higher computational burden. Use with caution in small datasets or low-signal settings.
+  - beta_mu, beta_tau: Controls the variance of terminal node parameters; higher values shrink more toward zero. Increasing this reduces variance of th estimated effect, pushing towards homogenous effects. 
+  - gamma_mu, gamma_tau: Controls the probability of splitting internal nodes; lower values lead to shallower trees (more regularization). Decreasing this, encourages shallower trees (i.e., more shrinkage), leading to more stable estimates in noisy or over-parameterized data.
+
     We recommend starting with the default values provided in this package, especially when he number of IQM covariates is larger than the number of biological covariates, and you have limited prior knowledge about appropriate levels of regularization.
 
-- If the user wants to perform voxel-wise harmonization it is better to specify them one by one in `outcomes_col` and parallelise computation. On the other hand, if the user is harmonizing few IDPs then you can specify all of them into `outcomes_col`
-- To set parameters such as `num_tree_mu`, `num_tree_tau`, `beta_mu`, `beta_tau`, `gamme_mu`, `gamme_tau`, we recommend the user to first default to the suggested initialisation, especially if the number of IQM variables is greater than number of biological covariate. Otherwise, increasing number of tress will ..., gamma will ..., tau will ...
