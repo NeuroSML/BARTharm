@@ -131,8 +131,8 @@ Below is a simulated example of a well-mixing MCMC chain with a clear burn-in pe
 If your chain instead looks like the one below — bouncing around slowly, stuck in places, or drifting a lot — this is a poorly mixing chain. It means the sampler is having trouble exploring the space properly. In this case, your results might not be trustworthy yet. When that happens, here’s what you can try
 
 - Try increasing the number of iterations (`num_iter`) or letting it warm up longer by increasing the burn-in (`burn_in`).
-- The model is too complicated. You can make it simpler by adjusting the settings to reduce the number of splits in the trees (lower `gamma`) or make the model more cautious (increase `beta`).
 - Try plotting again after the changes - you're looking for something that settles down and wiggles nicely like the first image.
+- If that doesn't work, you can make it simpler by adjusting the settings to reduce the number of splits in the trees (lower `gamma`) or make the model more cautious (increase `beta`), or decrease number of trees.
 
 ![Alt text](examples/MCMC-poor-example.png)
 
