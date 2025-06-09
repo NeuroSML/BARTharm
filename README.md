@@ -127,7 +127,7 @@ To ensure efficient and effective use of `bartharm()` across different datasets 
 - Harmonizing few summary features (e.g., IDPs). If you are working with a small number of imaging-derived phenotypes (IDPs) or summary metrics (e.g., NBV1, NBV2), you can safely specify all of them together in the outcomes_col list and will obtain results is feasible runtimes.
 
 - Tuning BART Parameters. The following parameters control the flexibility and regularization of the BART priors used to model scanner-related nuisance effects (mu) and biological signal (tau):
-- - num_tree_mu, num_tree_tau: The number of trees used in the BART ensemble for mu and tau, respectively. Increasing these increases model capacity and flexibility, but at the cost of higher computational burden. Use with caution in small datasets or low-signal settings.
+  - num_tree_mu, num_tree_tau: The number of trees used in the BART ensemble for mu and tau, respectively. Increasing these increases model capacity and flexibility, but at the cost of higher computational burden. Use with caution in small datasets or low-signal settings.
   - beta_mu, beta_tau: Controls the variance of terminal node parameters; higher values shrink more toward zero. Increasing this reduces variance of th estimated effect, pushing towards homogenous effects. 
   - gamma_mu, gamma_tau: Controls the probability of splitting internal nodes; lower values lead to shallower trees (more regularization). Decreasing this, encourages shallower trees (i.e., more shrinkage), leading to more stable estimates in noisy or over-parameterized data.
 
