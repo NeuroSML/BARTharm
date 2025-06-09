@@ -90,7 +90,8 @@ These chains are crucial for diagnostics and uncertainty quantification.
 
 ### Troubleshooting the outcome
 
-Residual noise chains can be used to examine MCMC convergence and evaluate whether the chosen number of Gibbs samples (`num_iter`) or the burn in (`burn_in`) are adequate. You can plot the chain as follows 
+Residual noise chains can be used to examine MCMC convergence and evaluate whether the chosen number of Gibbs samples (`num_iter`) or the burn in (`burn_in`) are adequate. You can plot the chain as follows:
+
 
 ```
 load("results/sigma_out_<OutcomeName>.RData")
@@ -101,12 +102,11 @@ Below is a simulated example of a well-mixing MCMC chain with a clear burn-in pe
 
 ![Alt text](examples/MCMC-burn-in-example.png)
 
-If your chain instead looks like the one below — bouncing around slowly, stuck in places, or drifting a lot — this is a poorly mixing chain. It means the sampler is having trouble exploring the space properly. In this case, your results might not be trustworthy yet.
+If your chain instead looks like the one below — bouncing around slowly, stuck in places, or drifting a lot — this is a poorly mixing chain. It means the sampler is having trouble exploring the space properly. In this case, your results might not be trustworthy yet. When that happens, here’s what you can try
 
-- The chain hasn’t had enough time to stabilize. Try increasing the number of iterations (`num_iter`) or letting it warm up longer by increasing the burn-in (`burn_in`).
+- Try increasing the number of iterations (`num_iter`) or letting it warm up longer by increasing the burn-in (`burn_in`).
 - The model is too complicated. You can make it simpler by adjusting the settings to reduce the number of splits in the trees (lower `gamma`) or make the model more cautious (increase `beta`).
-
-To check how well your chain is doing, you can look at plots like the one above or use tools to see if the values are bouncing around too much. A good chain should look like it's exploring smoothly without getting stuck or showing big jumps.
+- Try plotting again after the changes - you're looking for something that settles down and wiggles nicely like the first image.
 
 ![Alt text](examples/MCMC-poor-example.png)
 
