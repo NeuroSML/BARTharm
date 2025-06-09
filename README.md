@@ -46,7 +46,7 @@ bartharm/
 
 ---
 
-### Usage
+## Usage
 
 `bartharm()` is the main function used to perform harmonization via Bayesian Additive Regression Trees (BART). It supports both simulated and real datasets and outputs harmonized outcome variables by separating scanner-related nuisance variation (mu) from biological signal (tau).
 
@@ -73,16 +73,16 @@ harmonised_NBV1 <- df_harmonised$NBV1_harmonised
 harmonised_NBV2 <- df_harmonised$NBV2_harmonised
 ```
 
-####  Automatic Saving to Disk
+###  Automatic Saving to Disk
 
 BARTharm automatically saves key outputs to the specified `saving_path` directory:
 
 - Individual harmonized outcomes: For each outcome specified in outcomes_col, a separate .RData file is saved.
 - Full harmonized dataset: The complete df_harmonised is saved as `harmonised_simulated_df.RData` if using simulated data; `harmonised_realdata_df.RData` if using real data.
 - Full Gibbs Chains: Posterior samples from the Gibbs sampler are saved as .RData files, including:
--- Mu chains (scanner-related nuisance effects)
--- Tau chains (biological signal effects)
--- Residual noise chains (posterior noise)
+- - Mu chains (scanner-related nuisance effects)
+- - Tau chains (biological signal effects)
+- - Residual noise chains (posterior noise)
 
 
 ### How to Prepare the Real Data
