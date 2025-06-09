@@ -89,6 +89,7 @@ BARTharm automatically saves key outputs to the specified `saving_path` director
 These chains are crucial for diagnostics and uncertainty quantification. In particular, residual noise chains can be used to examine MCMC convergence plotting and evaluate whether the chosen number of Gibbs samples (`num_iter`) or the burn in (`burn_in`) are adequate.
 
 ```
+load("results/sigma_out_<OutcomeName>.RData")
 plot(sigma_out_<OutcomeName>, type = 'l', main = "Trace plot of residual noise for <OutcomeName>")
 ```
 
