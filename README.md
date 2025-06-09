@@ -97,6 +97,7 @@ load("results/sigma_out_<OutcomeName>.RData")
 plot(sigma_out_<OutcomeName>, type = 'l', main = "Trace plot of residual noise for <OutcomeName>")
 ```
 
+The figure below shows an example of a chain which mixes well after some burn in. After iteration 2000 (x-axis) the chain is mixing well. This means that if you specified `burn_in` > 2000 your estimates will be fine. The specified `num_iter` is also good enough. 
 ![Alt text](examples/MCMC-burn-in-example.png)
 
 
