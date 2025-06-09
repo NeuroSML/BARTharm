@@ -152,5 +152,6 @@ To ensure efficient and effective use of `bartharm()` across different datasets 
 
     We recommend starting with the default values provided in this package, especially when he number of IQM covariates is larger than the number of biological covariates, and you have limited prior knowledge about appropriate levels of regularization.
 
-    For more guidance we recommed the Users to look at the paper.
+
+*For more guidance and explanations of the model we recommed the Users to look at the paper.*
 
