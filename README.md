@@ -97,6 +97,8 @@ load("results/sigma_out_<OutcomeName>.RData")
 plot(sigma_out_<OutcomeName>, type = 'l', main = "Trace plot of residual noise for <OutcomeName>")
 ```
 
+![Alt text](examples/MCMC-burn-in-example.png)
+
 
 
 ### How to Prepare the Real Data
