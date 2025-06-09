@@ -117,6 +117,7 @@ Save your data frame as an .RData file using save() in R into the directory that
 save(my_dataframe, file = "data/real_data.RData")
 ```
 
+An example of a nicely formatted real dataset is provided in 'data/real_data.RData`.
 
 ### General recommendation
 
