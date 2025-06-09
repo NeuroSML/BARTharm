@@ -97,15 +97,18 @@ load("results/sigma_out_<OutcomeName>.RData")
 plot(sigma_out_<OutcomeName>, type = 'l', main = "Trace plot of residual noise for <OutcomeName>")
 ```
 
-The figure below shows an example of a chain which mixes well after some burn in. After iteration 2000 (x-axis) the chain is mixing well. This means that if you specified `burn_in > 2000` your estimates will be reliable. The specified `num_iter` is also high enough for the chain to reach convergence, resulting in a stable distribution of values.
+Below is a simulated example of a well-mixing MCMC chain with a clear burn-in period. The chain starts off high and gradually stabilizes around its typical value after the first `~2000` iterations. The shaded region highlights the burn-in phase, which should be discarded before summarizing the results. This means that if you specified `burn_in > 2000` your estimates will be reliable. The specified `num_iter` is also high enough for the chain to reach convergence, resulting in a stable distribution of values.
+
 ![Alt text](examples/MCMC-burn-in-example.png)
 
-If your chain instead looks messy, jumpy, or doesn’t seem to settle down, this is a sign that something might be wrong. It could mean:
+If your chain instead looks like the one below — bouncing around slowly, stuck in places, or drifting a lot — this is a poorly mixing chain. It means the sampler is having trouble exploring the space properly. In this case, your results might not be trustworthy yet.
 
 - The chain hasn’t had enough time to stabilize. Try increasing the number of iterations (`num_iter`) or letting it warm up longer by increasing the burn-in (`burn_in`).
 - The model is too complicated. You can make it simpler by adjusting the settings to reduce the number of splits in the trees (lower `gamma`) or make the model more cautious (increase `beta`).
 
 To check how well your chain is doing, you can look at plots like the one above or use tools to see if the values are bouncing around too much. A good chain should look like it's exploring smoothly without getting stuck or showing big jumps.
+
+![Alt text](examples/MCMC-poor-example.png)
 
 ### How to Prepare the Real Data
 
