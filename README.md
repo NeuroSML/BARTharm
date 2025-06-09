@@ -46,7 +46,7 @@ bartharm/
 
 ---
 
-### How to Prepare the Real Data
+## How to Prepare the Real Data
 
 To use the BARTharm harmonization pipeline, you must first prepare your dataset in a format compatible with the functions provided in this repository. Below are the key requirements and steps to ensure your data is correctly structured.
 
@@ -73,32 +73,37 @@ An example of a nicely formatted real dataset is provided in `data/real_data.RDa
 
 ## Usage
 
-`bartharm()` is the main function used to perform harmonization via Bayesian Additive Regression Trees (BART). It supports both simulated and real datasets and outputs harmonized outcome variables by separating scanner-related nuisance variation (mu) from biological signal (tau).
+The `examples` directory contains code for running BARTharm harmonization on either simulated data or real data.
 
-The function:
-- Loads and normalizes the data,
-- Fits BART models to decompose nuisance vs. signal effects,
+`bartharm()` is the main function used to perform harmonization via Bayesian Additive Regression Trees (BART). It supports both simulated and real datasets and outputs harmonized outcome variables by separating scanner-related nuisance variation (mu) from biological signal (tau). The simulated dataset which is generated in the `run_simulated.R` is the same described in the Simulation Framework 1 of the BARTharm paper. 
+
+The `bartharm()` function:
+- Loads/Simulates and normalizes the data,
+- Fits BART models to decompose scanner vs. biological effects,
 - Returns a data frame with both original and harmonized outcomes,
 - Saves harmonized results and posterior samples to disk.
 
-The `examples` directory contains code for running BARTharm harmonization on either simulated data or real data. To simply return the harmonized data, one can use the following:
+To simply return the harmonized data, one can use the following:
 
 ```
 df_harmonised <- bartharm(saving_path = saving_path, ... )
 ```
 
-where `...` are the user-specified arguments needed for harmonization. The returned object df_harmonised contains:
+where `...` are the user-specified arguments needed for harmonization and explained in `examples/run_simulated.R` or `examples/run_real.R`. 
+
+The returned object df_harmonised is a data frame which contains:
 - Original outcomes (e.g., NBV1, NBV2)
 - Harmonized outcomes (e.g., NBV1_harmonised, NBV2_harmonised)
+- Original real data or simulated data
 
-To extract them:
+To extract harmonized outcomes:
 
 ```
 harmonised_NBV1 <- df_harmonised$NBV1_harmonised
 harmonised_NBV2 <- df_harmonised$NBV2_harmonised
 ```
 
-
+You can inspect the full returned dataframe with `head(df_harmonised)`.
 
 ###  Automatic Saving to Disk
 
