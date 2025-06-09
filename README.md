@@ -80,7 +80,7 @@ harmonised_NBV2 <- df_harmonised$NBV2_harmonised
 BARTharm automatically saves key outputs to the specified `saving_path` directory:
 
 - Individual harmonized outcomes: For each outcome specified in outcomes_col, a separate .RData file is saved as `results/harmonised_<OutcomeName>.RData`
-- Full harmonized dataset: The complete df_harmonised is saved as `harmonised_simulated_df.RData` if using simulated data; `harmonised_realdata_df.RData` if using real data.
+- Full harmonized dataset: The complete df_harmonised containing the original real/simulated data plus the harmonized outcomes is saved as `harmonised_simulated_df.RData` if using simulated data; `harmonised_realdata_df.RData` if using real data.
 - Full Gibbs Chains: Posterior samples from the Gibbs sampler are saved as .RData files, including:
   - Mu chains (scanner-related nuisance effects) `results/mu_out_<OutcomeName>.RData`
   - Tau chains (biological signal effects) `results/tau_out_<OutcomeName>.RData`
