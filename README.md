@@ -73,6 +73,8 @@ harmonised_NBV1 <- df_harmonised$NBV1_harmonised
 harmonised_NBV2 <- df_harmonised$NBV2_harmonised
 ```
 
+
+
 ###  Automatic Saving to Disk
 
 BARTharm automatically saves key outputs to the specified `saving_path` directory:
@@ -84,11 +86,13 @@ BARTharm automatically saves key outputs to the specified `saving_path` director
 - - Tau chains (biological signal effects) `results/tau_out_<OutcomeName>.RData`
 - - Residual noise chains (posterior noise) `results/sigma_out_<OutcomeName>.RData`
 
-These chains are crucial for diagnostics and uncertainty quantification. In particular, residual noise chains can be used to examine MCMC convergence plotting
+These chains are crucial for diagnostics and uncertainty quantification. In particular, residual noise chains can be used to examine MCMC convergence plotting and evaluate whether the chosen number of Gibbs samples (`num_iter`) or the burn in (`burn_in`) are adequate.
 
 ```
 plot(sigma_out_<OutcomeName>, type = 'l', main = "Trace plot of residual noise for <OutcomeName>")
 ```
+
+
 
 ### How to Prepare the Real Data
 
