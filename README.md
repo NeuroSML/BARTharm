@@ -84,7 +84,11 @@ BARTharm automatically saves key outputs to the specified `saving_path` director
 - - Tau chains (biological signal effects) `results/tau_out_<OutcomeName>.RData`
 - - Residual noise chains (posterior noise) `results/sigma_out_<OutcomeName>.RData`
 
-These chains are crucial for diagnostics and uncertainty quantification. In particular, residual noise chains can be used to examine MCMC convergence. 
+These chains are crucial for diagnostics and uncertainty quantification. In particular, residual noise chains can be used to examine MCMC convergence plotting
+
+```
+plot(sigma_out_<OutcomeName>, type = 'l', main = "Trace plot of residual noise for <OutcomeName>")
+```
 
 ### How to Prepare the Real Data
 
