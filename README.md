@@ -61,7 +61,25 @@ where `...` are the user-specified arguments needed for harmonization.
 The `examples` directory contains code for running BARTharm harmonization on either simulated data or real data.  
 
 
+### How to Prepare the Real Data
 
+To use the BARTharm harmonization pipeline, you must first prepare your dataset in a format compatible with the functions provided in this repository. Below are the key requirements and steps to ensure your data is correctly structured.
 
+**Single Data Frame Format**
+Ensure your dataset is a single .RData file containing one data frame. Rows correspond to observations and the colums correspond to your variables. This data frame must include all necessary variables:
+- Biological covariates (e.g., Age, Sex)
+- Image Quality Metrics (IQMs) (e.g., snv, cnr, qi_1, qi_2)
+- Outcome variables to be harmonized (e.g., NBV1, NBV2)
+- A unique subject identifier (e.g., num_ID)
 
+**No Missing Data**
+The dataset must be complete—all rows must have valid (non-missing) values for each variable of each observation.
 
+**Consistent Column Naming**
+The column names in your data frame must exactly match those you pass to the bartharm() function via the arguments.
+
+**File Format**
+Save your data frame as an .RData file using save() in R into the directory that you then pass to the `bartharm()` as the `file_path`. For example:
+```
+save(my_dataframe, file = "data/real_data.RData")
+```
