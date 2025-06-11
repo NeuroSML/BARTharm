@@ -58,10 +58,12 @@ However, *BARTharm is not limited to a specific set of IQMs, or to a particular 
 
 **Single Data Frame Format**
 Ensure your dataset is a single .RData file containing one data frame. Rows correspond to observations and the colums correspond to your variables. This data frame must include all necessary variables:
-- Biological covariates (e.g., Age, Sex)
-- Image Quality Metrics (IQMs) (e.g., snv, cnr, qi_1, qi_2)
-- Outcome variables to be harmonized (e.g., NBV1, NBV2)
-- A unique subject identifier (e.g., num_ID)
+- Biological covariates (e.g., Age, Sex). The column names of these should be provided into `bio_col` argument (see `examples` directory).
+- Image Quality Metrics (IQMs) (e.g., snv, cnr, qi_1, qi_2). The column names of these should be provided into `iqm_col` argument (see `examples` directory).
+- Outcome variables to be harmonized (e.g., NBV1, NBV2). The column names of these should be provided into `outcomes_col` argument (see `examples` directory).
+- A unique subject identifier (e.g., num_ID). The column name of the identifier should be provided into `id_col` argument (see `examples` directory).
+
+We recommend the User to use all available biological covariates and all available image quality covariates to perform BARTharm harmonization. 
 
 **No Missing Data**
 The dataset must be complete, all rows must have valid (non-missing) values for each variable of each observation.
