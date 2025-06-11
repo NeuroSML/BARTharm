@@ -71,13 +71,15 @@ We recommend the User to use all available biological covariates and all availab
 **No Missing Data**: The dataset must be complete, all rows must have valid (non-missing) values for each variable of each observation.
 
 **File Format**
+You can provide your dataset in one of the following formats:
 
-Save your data frame as an .RData file using save() in R into the directory that you then pass to the `bartharm()` as the `file_path`. For example:
-```
-save(my_dataframe, file = "data/real_data.RData")
-```
+- .RData 
+- .csv 
+- .tsv 
 
-An example of a nicely formatted real dataset is provided in `data/real_data.RData`.
+Pass the path to one of the above file types as the `file_path` argument in `bartharm()`.
+
+Examples of a correctly formatted real dataset are provided in the `data` directory.
 
 ## Usage
 

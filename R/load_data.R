@@ -9,10 +9,26 @@
 # - iqm_col: Vector of column names corresponding to IQM covariates
 
 load_data <- function(filepath, id_col, bio_col, iqm_col){
+
+  # Determine file extension
+  ext <- tools::file_ext(filepath)
   
-  # Load the dataset and remove rows with missing values
-  loaded_data <- load(file=filepath)
-  df <- get(loaded_data)
+  # Load the dataset based on file type
+  if (ext == "RData" || ext == "rda") {
+    cat("Loading RData file\n")
+    loaded_name <- load(file = filepath)
+    df <- get(loaded_name)
+  } else if (ext == "csv") {
+    cat("Loading csv file\n")
+    df <- read.csv(filepath, stringsAsFactors = TRUE)
+  } else if (ext == "tsv") {
+    cat("Loading tsv file\n")
+    df <- read.delim(filepath, stringsAsFactors = TRUE)
+  } else {
+    stop("Unsupported file type: must be .RData, .csv, or .tsv")
+  }
+
+  # Remove rows with missing values
   df <- na.omit(df)
   
   # Select biological covariate columns along with numerical ID
