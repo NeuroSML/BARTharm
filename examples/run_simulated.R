@@ -31,8 +31,8 @@ df_harmonised <- bartharm(
   n_subjects = 1000,                 # Number of subjects to simulate
   linear_tau = TRUE,                 # Linear/Non-Linear biological effects
   linear_mu = TRUE,                  # Linear/Non-Linear scanner effects
-  num_iter = 500,                   # Total MCMC iterations
-  burn_in = 50,                     # Number of burn-in samples to discard
+  num_iter = 5000,                   # Total MCMC iterations
+  burn_in = 500,                     # Number of burn-in samples to discard
   thinning_interval = 2,             # Thinning
   num_tree_mu = 200,                 # Trees in mu forest (IQMs)
   num_tree_tau = 200,                # Trees in tau forest (biological)

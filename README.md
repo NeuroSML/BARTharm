@@ -128,12 +128,12 @@ The User can specify a format in the argument `save_format` between RData, csv a
   - Tau chains (biological signal effects) `results/tau_out_<OutcomeName>.RData`
   - Residual noise chains (posterior noise) `results/sigma_out_<OutcomeName>.RData`
 
-These chains are crucial for diagnostics and uncertainty quantification. 
+The `results` directory contains examplare outputs from running the `run_simulated.R` example script.
 
 
 ### Troubleshooting the outcome
 
-Residual noise chains can be used to examine MCMC convergence and evaluate whether the chosen number of Gibbs samples (`num_iter`) or the burn in (`burn_in`) are adequate. You can plot the chain as follows:
+Residual noise Gibbs chain can be used to examine MCMC convergence and evaluate whether the chosen number of Gibbs samples (`num_iter`) or the burn in (`burn_in`) are adequate. You can plot the chain as follows:
 
 
 ```
