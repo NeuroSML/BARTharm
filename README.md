@@ -57,6 +57,7 @@ Image Quality Metrics (IQMs) can be extracted using [MRIQC](https://mriqc.readth
 However, *BARTharm is not limited to a specific set of IQMs, or to a particular extraction tool such as MRIQC, or a particular imaging modality*. It can be flexibly applied to any collection of IQMs derived from any available quality assessment framework, provided they capture meaningful scanner-induced variability. Furthermore, BARTharm can accommodate any number or subset of metrics, the user just needs to specify the column names in the argument `iqm_col`.
 
 **Single Data Frame Format**
+
 Ensure your dataset is a single .RData file containing one data frame. Rows correspond to observations and the colums correspond to your variables. This data frame must include all necessary variables:
 - Biological covariates (e.g., Age, Sex). 
 - Image Quality Metrics (IQMs) (e.g., snv, cnr, qi_1, qi_2). 
@@ -70,6 +71,7 @@ We recommend the User to use all available biological covariates and all availab
 **No Missing Data**: The dataset must be complete, all rows must have valid (non-missing) values for each variable of each observation.
 
 **File Format**
+
 Save your data frame as an .RData file using save() in R into the directory that you then pass to the `bartharm()` as the `file_path`. For example:
 ```
 save(my_dataframe, file = "data/real_data.RData")
