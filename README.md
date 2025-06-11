@@ -50,6 +50,12 @@ bartharm/
 
 To use the BARTharm harmonization pipeline, you must first prepare your dataset in a format compatible with the functions provided in this repository. Below are the key requirements and steps to ensure your data is correctly structured.
 
+**Extracting Image Quality Metrics (IQMs)**
+
+Image Quality Metrics (IQMs) can be extracted using [MRIQC](https://mriqc.readthedocs.io/en/latest/), which is a tool to extract no-reference IQMs (image quality metrics) from structural (T1w and T2w), functional and diffusion MRI (magnetic resonance imaging) data. 
+
+However, *BARTharm is not limited to a specific set of IQMs, or to a particular extraction tool such as MRIQC, or a particular imaging modality*. It can be flexibly applied to any collection of IQMs derived from any available quality assessment framework, provided they capture meaningful scanner-induced variability. Furthermore, BARTharm can accommodate any number or subset of metrics, the user just needs to specify the column names in the argument `iqm_col`.
+
 **Single Data Frame Format**
 Ensure your dataset is a single .RData file containing one data frame. Rows correspond to observations and the colums correspond to your variables. This data frame must include all necessary variables:
 - Biological covariates (e.g., Age, Sex)
