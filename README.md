@@ -58,18 +58,16 @@ However, *BARTharm is not limited to a specific set of IQMs, or to a particular 
 
 **Single Data Frame Format**
 Ensure your dataset is a single .RData file containing one data frame. Rows correspond to observations and the colums correspond to your variables. This data frame must include all necessary variables:
-- Biological covariates (e.g., Age, Sex). The column names of these should be provided into `bio_col` argument (see `examples` directory).
-- Image Quality Metrics (IQMs) (e.g., snv, cnr, qi_1, qi_2). The column names of these should be provided into `iqm_col` argument (see `examples` directory).
-- Outcome variables to be harmonized (e.g., NBV1, NBV2). The column names of these should be provided into `outcomes_col` argument (see `examples` directory).
-- A unique subject identifier (e.g., num_ID). The column name of the identifier should be provided into `id_col` argument (see `examples` directory).
+- Biological covariates (e.g., Age, Sex). 
+- Image Quality Metrics (IQMs) (e.g., snv, cnr, qi_1, qi_2). 
+- Outcome variables to be harmonized (e.g., NBV1, NBV2). 
+- A unique subject identifier (e.g., num_ID). 
 
 We recommend the User to use all available biological covariates and all available image quality covariates to perform BARTharm harmonization. 
 
-**No Missing Data**
-The dataset must be complete, all rows must have valid (non-missing) values for each variable of each observation.
+**Consistent Column Naming**: The column names in your data frame must exactly match those you pass to the bartharm() function via the arguments `bio_col` for the biological covariates, `iqm_col` for the IQMs, `outcomes_col` for outcome variables to be harmonized, and `id_col` for the unique subject identifier (see `examples` directory).
 
-**Consistent Column Naming**
-The column names in your data frame must exactly match those you pass to the bartharm() function via the arguments.
+**No Missing Data**: The dataset must be complete, all rows must have valid (non-missing) values for each variable of each observation.
 
 **File Format**
 Save your data frame as an .RData file using save() in R into the directory that you then pass to the `bartharm()` as the `file_path`. For example:
