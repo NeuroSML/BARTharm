@@ -22,17 +22,17 @@
 # - gamma_mu, gamma_tau: BART prior parameters controlling sparsity.
 
 
-bartharm <- function(file_path = " ", saving_path = " ", simulate_data = TRUE, bio_col = c(), iqm_col = c(), outcomes_col = c(), id_col = c(), n_subjects = 1000, linear_tau = TRUE, linear_mu = TRUE,
+bartharm <- function(file_path = " ", saving_path = " ", save_format = "", simulate_data = TRUE, bio_col = c(), iqm_col = c(), outcomes_col = c(), id_col = c(), n_subjects = 1000, linear_tau = TRUE, linear_mu = TRUE,
                      num_iter = 5000, burn_in = 500, thinning_interval = 2, num_tree_mu = 200, num_tree_tau = 50, beta_mu = 2, beta_tau = 2, gamma_mu = 0.95, gamma_tau = 0.95){
   
   # Load or simulate data
   if(simulate_data){
     cat("Simulating data \n")
-    data <- get_data(simulate = TRUE, saving_path = saving_path, n_subjects = n_subjects, linear_tau = linear_tau, linear_mu = linear_mu)
+    data <- get_data(simulate = TRUE, saving_path = saving_path, save_format = save_format,  n_subjects = n_subjects, linear_tau = linear_tau, linear_mu = linear_mu)
     cat("Saved simulated data \n")
   }else{
     cat("Processing real data from", file_path ,"\n")
-    data <- get_data(simulate = FALSE, filepath = file_path, saving_path = saving_path,  id_col = id_col, bio_col = bio_col, iqm_col = iqm_col, outcomes_col = outcomes_col)
+    data <- get_data(simulate = FALSE, filepath = file_path, save_format = save_format, saving_path = saving_path,  id_col = id_col, bio_col = bio_col, iqm_col = iqm_col, outcomes_col = outcomes_col)
   }
   
   # Extract normalized matrices and outcome
@@ -98,9 +98,11 @@ bartharm <- function(file_path = " ", saving_path = " ", simulate_data = TRUE, b
   # Save the full harmonized dataframe
   cat("Saving final harmonized dataset\n")
   if(simulate_data){
-    save(file=paste0(saving_path, 'harmonised_simulated_df.RData'), df_harmonised)
+    #save(file=paste0(saving_path, 'harmonised_simulated_df.RData'), df_harmonised)
+    saving_data(df_harmonised, "harmonised_simulated_df", saving_path, save_format = save_format)
   }else{
-    save(file=paste0(saving_path, 'harmonised_realdata_df.RData'), df_harmonised)
+    #save(file=paste0(saving_path, 'harmonised_realdata_df.RData'), df_harmonised)
+    saving_data(df_harmonised, "harmonised_realdata_df", saving_path, save_format = save_format)
   }
   
   return(df_harmonised)

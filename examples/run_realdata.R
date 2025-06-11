@@ -11,9 +11,10 @@ source("R/get_data.R")
 source("R/simulate_data.R")
 source("R/normalise_data.R")
 source("R/load_data.R")
+source("R/saving_data.R")
 
 # Define path to real dataset (must be an .RData file containing a data frame)
-file_path <- 'data/real_data.RData' # dummy Real Data file for example
+file_path <- 'data/real_data.RData' # example Real Data file (can also use .csv or .tsv)
 
 # Directory where results and harmonized outputs will be saved
 saving_path <- "results/"
@@ -30,6 +31,9 @@ outcomes_col <- c("NBV1", "NBV2")
 # Specify the name of the subject ID column
 id_col <- c("num_ID")
 
+# Specify the saving format
+save_format = "RData" # can also be csv or tsv
+
 # Run BARTharm harmonization on real data
 # - Loads and normalizes data
 # - Runs BART-based Gibbs sampling to separate nuisance (mu) and signal (tau)
@@ -38,6 +42,7 @@ id_col <- c("num_ID")
 df_harmonised <- bartharm(
   simulate_data = FALSE,             # Use real data (not simulated)
   saving_path = saving_path,         # Output directory
+  save_format = save_format,         # Saving format
   file_path = file_path,             # Input dataset path
   bio_col = bio_col,                 # Biological covariates
   iqm_col = iqm_col,                 # IQM covariates

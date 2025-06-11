@@ -117,10 +117,12 @@ You can inspect the full returned dataframe with `head(df_harmonised)`.
 
 ###  Automatic Saving to Disk
 
-BARTharm automatically saves key outputs to the specified `saving_path` directory:
+The User can specify a format in the argument `save_format` between RData, csv and tsv for the saved dataframe. BARTharm automatically saves these key outputs to the specified `saving_path` directory:
 
+- Original, pre-processed, Real Data or Simulated Data: The original dataset is saved as `simulated_df.<save_format>` for simulated data, `realdata_df.<save_format>` for real data, using the specified preferred `save_format`.
+- Normalised biological covariate data and iqm covariate data. Original pre-processed, normalised, Real Data or Simulated Data divided into either bio or iqm are saved as `normalised_simdata_bio.<save_format>/ normalised_simdata_iqm.<save_format>` for simulated data, `normalised_realdata_bio.<save_format>/ normalised_realdata_iqm.<save_format>` for real data, using the specified preferred `save_format`.
 - Individual harmonized outcomes: For each outcome specified in outcomes_col, a separate .RData file is saved as `results/harmonised_<OutcomeName>.RData`
-- Full harmonized dataset: The complete df_harmonised containing the original real/simulated data plus the harmonized outcomes is saved as `harmonised_simulated_df.RData` if using simulated data; `harmonised_realdata_df.RData` if using real data.
+- Full harmonized dataset: The complete df_harmonised containing the original data plus the harmonized outcomes is saved as `harmonised_simulated_df.<save_format>` for simulated data, `harmonised_realdata_df.<save_format>` for real data, using the specified preferred `save_format`.
 - Full Gibbs Chains: Posterior samples from the Gibbs sampler are saved as .RData files, including:
   - Mu chains (scanner-related nuisance effects) `results/mu_out_<OutcomeName>.RData`
   - Tau chains (biological signal effects) `results/tau_out_<OutcomeName>.RData`

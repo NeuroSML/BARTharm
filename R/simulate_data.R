@@ -101,14 +101,14 @@ simulate_data <- function(n_subjects = 1000,
     base + (3 - noise) * 2
   }, simdata$scanner_resolution, simdata$noise_level)
   
-  # Step 9: Finalize outcome with IQM effects
+  # Step 9: Finalize outcome with IQM effects 
   outcome_simulated <- outcome_simulated + 1.75 * simdata$SNR - 1.55 * simdata$CNR - 0.5 * simdata$SNR * simdata$CNR
   
   # Save raw outcome values
-  simdata$outcome_clean <- outcome
-  simdata$outcome_bio <- outcome - random_effects
-  simdata$outcome_iqm <- outcome_simulated - outcome
-  simdata$outcome_simulated <- outcome_simulated
+  simdata$outcome_clean <- outcome  #this corresponds to the true, harmonized, outcome Y harm
+  simdata$outcome_bio <- outcome - random_effects #this corresponds to noiseless biological contribution TAU
+  simdata$outcome_iqm <- outcome_simulated - outcome #this corresponds to scanner contribution MU
+  simdata$outcome_simulated <- outcome_simulated #this corresponds to observed outcome Y
 
   simdata$scanner_id <- as.factor(simdata$scanner_id)
   

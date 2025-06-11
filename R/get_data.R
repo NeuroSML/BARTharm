@@ -17,7 +17,7 @@
 # - linear_mu: Logical. If TRUE, model scanner effects linearly.
 
 
-get_data <- function(simulate=FALSE, filepath = "", saving_path = "", id_col = c(), bio_col = c(), iqm_col = c(), outcomes_col = c(), 
+get_data <- function(simulate=FALSE, filepath = "", saving_path = "", save_format = "", id_col = c(), bio_col = c(), iqm_col = c(), outcomes_col = c(), 
                      n_subjects = 1000, linear_tau = TRUE, linear_mu = TRUE){
   if(simulate){
     data <- simulate_data(n_subjects, linear_tau, linear_mu)
@@ -25,7 +25,8 @@ get_data <- function(simulate=FALSE, filepath = "", saving_path = "", id_col = c
     data_iqm <- data$data_iqm
     df <- data$simdata
     
-    save(file=paste0(saving_path, 'simulated_df.RData'), df)
+    #save(file=paste0(saving_path, 'simulated_df.RData'), df)
+    saving_data(df, "simulated_df", saving_path, save_format = save_format) 
     
     id_col <- c("subid")
     outcomes_col <- c("outcome_simulated")
@@ -36,10 +37,11 @@ get_data <- function(simulate=FALSE, filepath = "", saving_path = "", id_col = c
     norm_data_bio <- normalised_data$norm_data_bio
     norm_data_iqm <- normalised_data$norm_data_iqm
     
-    save(file=paste0(saving_path, 'normalised_simdata_bio.RData'), norm_data_bio)
-    save(file=paste0(saving_path, 'normalised_simdata_iqm.RData'), norm_data_iqm)
-    
-    
+    #save(file=paste0(saving_path, 'normalised_simdata_bio.RData'), norm_data_bio)
+    #save(file=paste0(saving_path, 'normalised_simdata_iqm.RData'), norm_data_iqm)
+
+    saving_data(norm_data_bio, "normalised_simdata_bio", saving_path, save_format = save_format) 
+    saving_data(norm_data_iqm, "normalised_simdata_iqm", saving_path, save_format = save_format) 
     
   }else{
     # Call function to load data
@@ -48,7 +50,8 @@ get_data <- function(simulate=FALSE, filepath = "", saving_path = "", id_col = c
     data_iqm <- data$data_iqm
     df <- data$data
     
-    save(file=paste0(saving_path, 'realdata_df.RData'), df)
+    #save(file=paste0(saving_path, 'realdata_df.RData'), df)
+    saving_data(df, "realdata_df", saving_path, save_format = save_format) 
     
     # Verify that the split happened correctly
     print("Bio column names:")
@@ -62,8 +65,10 @@ get_data <- function(simulate=FALSE, filepath = "", saving_path = "", id_col = c
     norm_data_bio <- normalised_data$norm_data_bio
     norm_data_iqm <- normalised_data$norm_data_iqm
     
-    save(file=paste0(saving_path, 'normalised_realdata_bio.RData'), norm_data_bio)
-    save(file=paste0(saving_path, 'normalised_realdata_iqm.RData'), norm_data_iqm)
+    #save(file=paste0(saving_path, 'normalised_realdata_bio.RData'), norm_data_bio)
+    #save(file=paste0(saving_path, 'normalised_realdata_iqm.RData'), norm_data_iqm)
+    saving_data(norm_data_bio, "normalised_realdata_bio", saving_path, save_format = save_format) 
+    saving_data(norm_data_iqm, "normalised_realdata_iqm", saving_path, save_format = save_format) 
     
   }
   
