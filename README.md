@@ -128,7 +128,7 @@ The User can specify a format in the argument `save_format` between RData, csv a
   - Tau chains (biological signal effects) `results/tau_out_<OutcomeName>.RData`
   - Residual noise chains (posterior noise) `results/sigma_out_<OutcomeName>.RData`
 
-The `results` directory contains examplare outputs from running the `run_simulated.R` example script.
+The `results` directory contains examplar outputs from running the `run_simulated.R` example script with `save_format = "RData`.
 
 
 ### Troubleshooting the outcome
