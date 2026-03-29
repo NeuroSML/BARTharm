@@ -130,7 +130,7 @@ The User can specify a format in the argument `save_format` between RData, csv, 
   - Mu chains (scanner-related nuisance effects) `<saving_path>/mu_out_<OutcomeName>.<save_format>`
   - Tau chains (biological signal effects) `<saving_path>/tau_out_<OutcomeName>.<save_format>`
   - Residual noise chains (posterior noise) `<saving_path>/sigma_out_<OutcomeName>.<save_format>`
-  - If `var_scaling = TRUE`, scanner/site-specific standard deviations are also saved `<saving_path>/sigma_site_out_<OutcomeName>.<save_format>`
+  - If `var_scaling = TRUE`, scanner/site-specific variances are also saved `<saving_path>/sigma_site_out_<OutcomeName>.<save_format>`
 - Full harmonized dataset: If `bartharm()` is run sequentially, the complete df_harmonised containing the original data plus the harmonized and predicted outcomes is saved as `<saving_path>/df_combined_harmonised_realdata.<save_format>` for real data, `<saving_path>/harmonised_simulated_df.<save_format>` for simulated data, using the specified preferred `save_format`. Otherwise, if `bartharm()` is run in parallel, one outcome at a time, we provide a post-processing script to combined everything into a single dataframe once all outcomes have been harmonised. To use it, make sure all output files are correctly saved into the pre-specified `saving_path` and then run 
 ```
 df_harmonised <- combine_harmonised_outcomes(saving_path, save_format)

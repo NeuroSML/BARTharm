@@ -42,9 +42,11 @@ bartharm_inference <- function(num_iter, thinning_interval, X_iqm_matrix, X_bio_
     sigma_site_out <- matrix(NA, nrow = num_saved_iters, ncol = n_sites)
     cat("Initializing site-specific variances \n")
     sigma_sites <- rep(var(Y), n_sites)
+    site_weights <- 1 /  sigma_sites[site_labels]
   } else{
     print("Not using site-specific variances \n")
     sigma_site_out <- matrix(NA, nrow = num_saved_iters, ncol = 1)
+    site_weights <- 1 # No weighting
   }
   
   cat("Starting sampling\n")
@@ -54,14 +56,16 @@ bartharm_inference <- function(num_iter, thinning_interval, X_iqm_matrix, X_bio_
     
     R <- (as.numeric(Y) - tau)  # Update residuals for mu estimation
     
-    mu <- mu_forest$do_gibbs(X_iqm_matrix, R, X_iqm_matrix, 1)  # Update mu using Gibbs sampling
+    #mu <- mu_forest$do_gibbs(X_iqm_matrix, R, X_iqm_matrix, 1)  # Update mu using Gibbs sampling
+    mu <- mu_forest$do_gibbs_weighted(X_iqm_matrix, R, site_weights, X_iqm_matrix, 1)  # Update mu using Gibbs sampling
     
     sigma <- mu_forest$get_sigma()  # Get current estimate of sigma
     tau_forest$set_sigma(sigma)  # Set sigma in tau forest
     
     R <- (as.numeric(Y) - mu)  # Update residuals for tau estimation
     
-    tau <- tau_forest$do_gibbs(X_bio_matrix, R, X_bio_matrix, 1)  # Update tau using Gibbs sampling
+    #tau <- tau_forest$do_gibbs(X_bio_matrix, R, X_bio_matrix, 1)  # Update tau using Gibbs sampling
+    tau <- tau_forest$do_gibbs_weighted(X_bio_matrix, R, site_weights, X_bio_matrix, 1)  # Update tau using Gibbs sampling
 
     # Update site-specific variances if variance scaling is enabled
     if(var_scaling){
@@ -72,12 +76,23 @@ bartharm_inference <- function(num_iter, thinning_interval, X_iqm_matrix, X_bio_
         mask <- site_labels == site_list[s]
         nj <- sum(mask)
         res_j <- residuals[mask]
-        alpha_post <- alpha0 + nj/2
-        beta_post <- beta0 + sum(res_j^2)/2
-        sigma_sites[s] <- rinvgamma(1, shape=alpha_post, scale=beta_post)
+        beta_post <- beta0 + sum(res_j^2) / (2 * sigma^2)
+        alpha_post <- alpha0 + nj / 2
+        sigma_sites[s] <- rinvgamma(1, shape = alpha_post, scale = beta_post)
+
+        # Shrink small sites toward the global mean
+        grand_mean <- mean(sigma_sites)
+        shrink_factor <- nj / (nj + 25)  # larger sites -> ~1, smaller -> <1
+        sigma_sites <- (shrink_factor * sigma_sites) + (1 - shrink_factor) * grand_mean
+        
+        # Normalize to remove global scale drift
+        mean_log_a <- mean(log(sigma_sites))
+        sigma_sites <- exp(log(sigma_sites) - mean_log_a)
       }
+      site_weights <- 1 / sigma_sites[match(site_labels, site_list)]
     }else{
       sigma_sites <- NA
+      site_weights <- 1
     }
     
     # Save samples at thinning intervals
