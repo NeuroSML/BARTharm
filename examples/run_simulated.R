@@ -43,6 +43,6 @@ df_harmonised <- bartharm(
 )
 
 # Extract the harmonized outcome variable from the output
-harmonised_outcome <- df_harmonised$outcome_simulated_harmonised
+harmonised_outcome <- df_harmonised$outcome_simulated_harmonised_median_original
 
 # To evaluate the goodness of harmonization you can compare harmonised_outcome with the simulated clean data df_harmonised$outcome_clean
